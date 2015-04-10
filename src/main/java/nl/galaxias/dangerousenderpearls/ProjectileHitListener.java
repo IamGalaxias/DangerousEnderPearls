@@ -2,6 +2,7 @@ package nl.galaxias.dangerousenderpearls;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -13,11 +14,14 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 public class ProjectileHitListener implements Listener {
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent e) {
+        Projectile entity = e.getEntity();
         double damage = DangerousEnderPearls.getPlugin().getConfig().getDouble("damage");
 
         if (e.getEntityType() == EntityType.ENDER_PEARL) {
-            Location l = e.getEntity().getLocation();
-            l.getWorld().createExplosion(l, (float) damage);
+            if (entity.hasPermission("dep.explosion")) {
+                Location l = e.getEntity().getLocation();
+                l.getWorld().createExplosion(l, (float) damage);
+            }
         }
     }
 }

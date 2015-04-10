@@ -1,3 +1,8 @@
 name: DangerousEnderPearls
 version: 1.0
 main: nl.galaxias.dangerousenderpearls.DangerousEnderPearls
+
+permissions:
+    dep.explosion:
+        description: Causes an explosion when an Ender Pearl is thrown
+        default: op
