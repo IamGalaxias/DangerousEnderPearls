@@ -20,7 +20,6 @@ public class DangerousEnderPearls extends JavaPlugin {
         registerEvents(this, new ProjectileHitListener());
 
         config.addDefault("damage", 1.0);
-        config.addDefault("cooldown-in-seconds", 60);
 
         config.options().copyDefaults(true);
         saveConfig();
