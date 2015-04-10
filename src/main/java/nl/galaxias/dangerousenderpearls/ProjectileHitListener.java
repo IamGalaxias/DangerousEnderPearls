@@ -18,10 +18,8 @@ public class ProjectileHitListener implements Listener {
         double damage = DangerousEnderPearls.getPlugin().getConfig().getDouble("damage");
 
         if (e.getEntityType() == EntityType.ENDER_PEARL) {
-            if (entity.hasPermission("dep.explosion")) {
-                Location l = e.getEntity().getLocation();
-                l.getWorld().createExplosion(l, (float) damage);
-            }
+            Location location = e.getEntity().getLocation();
+            location.getWorld().createExplosion(location, (float) damage);
         }
     }
 }
